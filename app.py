@@ -20,6 +20,10 @@ app.config["DEBUG"] = True
 app.config["SECRET_KEY"] = JWT_SECRET
 CORS(app, resources={r"/*": {"origins": "*"}}, supports_credentials=True)
 
+# Register admin module
+from admin import admin_bp
+app.register_blueprint(admin_bp)
+
 
 def get_db():
     conn = sqlite3.connect("users.db")
